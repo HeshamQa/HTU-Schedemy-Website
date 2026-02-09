@@ -244,7 +244,7 @@ export async function getScheduledEntries(): Promise<ScheduleEntry[]> {
   }
 }
 export async function getFullScheduledEntries(): Promise<FullScheduleEntry[]> {
-  const url = `${API_BASE_URL_ROUTING}/schedules`;
+  const url = `${API_BASE_URL_ROUTING}api/schedules`;
 
   try {
     const response = await fetch(url, {
@@ -345,7 +345,7 @@ export async function getFullScheduledEntries(): Promise<FullScheduleEntry[]> {
 
 
 export async function addScheduleEntry(entry: Omit<ScheduleEntry, 'id'>): Promise<ScheduleEntry> {
-  const url = '/schedules'; // Call internal API route
+  const url = '/api/schedules'; // Call internal API route
   try {
     const apiEntry = {
       course: entry.courseId ? { id: parseInt(entry.courseId) } : null,
