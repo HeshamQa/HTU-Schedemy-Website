@@ -48,19 +48,27 @@ export default function AssignSchedulePage() {
 
   // Fetch schedule, instructors, and TAs on component mount
   useEffect(() => {
-    // TODO: Fetch generated schedule from backend API
-    const fetchedSchedule: ScheduleEntry[] = [
-      // Example data - replace with actual fetch
-      { id: 1, course: { id: 'CS101', name: 'Introduction to Programming' }, section: '001', room: { id: 'B101', name: 'Building B, Room 101' }, timeSlot: { id: 'TS1', name: 'Mon 9:00-10:00' }, instructorId: undefined, taId: undefined },
-      { id: 2, course: { id: 'MATH201', name: 'Calculus II' }, room: { id: 'A203', name: 'Building A, Room 203' }, timeSlot: { id: 'TS2', name: 'Tue 10:00-11:00' }, instructorId: undefined, taId: undefined },
-    ];
-    setSchedule(fetchedSchedule);
+    async function initData() {
+      // TODO: Fetch generated schedule from backend API
+      const fetchedSchedule: ScheduleEntry[] = [
+        // Example data - replace with actual fetch
+        { id: 1, course: { id: 'CS101', name: 'Introduction to Programming' }, section: '001', room: { id: 'B101', name: 'Building B, Room 101' }, timeSlot: { id: 'TS1', name: 'Mon 9:00-10:00' }, instructorId: undefined, taId: undefined },
+        { id: 2, course: { id: 'MATH201', name: 'Calculus II' }, room: { id: 'A203', name: 'Building A, Room 203' }, timeSlot: { id: 'TS2', name: 'Tue 10:00-11:00' }, instructorId: undefined, taId: undefined },
+      ];
+      setSchedule(fetchedSchedule);
 
-    // Fetch instructors and TAs (assuming getInstructors and getTAs are client-side or fetched elsewhere and passed)
-    const fetchedInstructors = getInstructors(); // Replace with actual fetch if needed
-    const fetchedTAs = getTAs(); // Replace with actual fetch if needed
-    setInstructors(fetchedInstructors);
-    setTAs(fetchedTAs);
+      // Fetch instructors and TAs
+      try {
+        const fetchedInstructors = await getInstructors();
+        const fetchedTAs = await getTAs();
+        setInstructors(fetchedInstructors as any); // Casting since local Instructor type is simpler
+        setTAs(fetchedTAs as any);
+      } catch (error) {
+        console.error("Error fetching data in AssignSchedulePage:", error);
+      }
+    }
+
+    initData();
   }, []);
 
   const handleInstructorChange = (entryId: string | number, instructorId: string) => {
@@ -125,14 +133,14 @@ export default function AssignSchedulePage() {
                     <Select onValueChange={(value) => handleTAChange(entry.id, value)} value={entry.taId?.toString()}>
                       <SelectTrigger>
                         <SelectValue placeholder="Select TA" />
-                      <SelectContent>
-                        {tas.map(ta => (
-                          <SelectItem key={ta.id} value={ta.id.toString()}>
-                            {ta.name}
-                          </SelectItem>
-                        ))}
-                         <SelectItem value="">None</SelectItem> {/* Option for no TA */}
-                      </SelectContent>
+                        <SelectContent>
+                          {tas.map(ta => (
+                            <SelectItem key={ta.id} value={ta.id.toString()}>
+                              {ta.name}
+                            </SelectItem>
+                          ))}
+                          <SelectItem value="">None</SelectItem> {/* Option for no TA */}
+                        </SelectContent>
                       </SelectTrigger>
                     </Select>
                   </TableCell>

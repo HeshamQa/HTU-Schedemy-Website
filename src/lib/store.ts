@@ -397,11 +397,9 @@ export async function addScheduleEntry(entry: Omit<ScheduleEntry, 'id'>): Promis
 
 // --- Instructor Management ---
 export async function getInstructors(): Promise<Instructor[]> {
-  // const url = `${API_BASE_URL}/instructor?departmentName=COMPUTER_SCIENCE`;
-  const url = `${API_BASE_URL}/instructor/?departmentName=ARTIFICIAL_INTELLIGENCE`
+  const url = `${API_BASE_URL_ROUTING}api/instructor`
 
   try {
-    // const response = await fetch('/api/instructor');
     const response = await fetch(url);
     console.log(response)
     if (!response.ok) {

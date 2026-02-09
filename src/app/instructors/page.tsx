@@ -41,7 +41,7 @@ export default function InstructorsPage() {
         // Assuming your API endpoint for instructors is /api/instructor
         // This uses the Next.js API route at src/app/api/instructor/route.ts
         // which in turn fetches from your Spring Boot backend.
-        const res = await fetch('/instructor');
+        const res = await fetch('/api/instructor');
         if (!res.ok) {
           console.error('Failed to fetch instructors from Next.js API route:', res.status, res.statusText);
           // Optionally, try fetching directly from Spring Boot as a fallback or for more detailed error
@@ -75,7 +75,7 @@ export default function InstructorsPage() {
     };
 
     try {
-      const response = await fetch('/instructor', { // Posting to Next.js API route
+      const response = await fetch('/api/instructor', { // Posting to Next.js API route
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newInstructorFromForm),
@@ -107,7 +107,7 @@ export default function InstructorsPage() {
     const allInstructorIds = instructors.map(instructor => instructor.id);
 
     try {
-      const response = await fetch('/email', {
+      const response = await fetch('/api/email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(allInstructorIds),
@@ -130,7 +130,7 @@ export default function InstructorsPage() {
     setLoadingEmailIds(prev => new Set(prev.add(instructorId)));
 
     try {
-      const response = await fetch('/email', {
+      const response = await fetch('/api/email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify([instructorId]),

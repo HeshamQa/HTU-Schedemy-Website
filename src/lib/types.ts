@@ -7,8 +7,17 @@ export interface Named extends Identifiable {
   name: string;
 }
 
-export type Instructor = Named;
-export type TA = Named;
+export interface Instructor extends Named {
+  email: string;
+  department: string;
+  jobTitle: string;
+  teachingLoad?: number;
+}
+
+export type TA = Named & {
+  email?: string;
+  department?: string;
+};
 export type Room = Named & { capacity?: number };
 
 export interface Course {
