@@ -1,7 +1,7 @@
 // app/api/schedules/route.ts
 import { NextResponse } from 'next/server';
 
-const API_URL = 'https://ajapi.htupholio.com/schedules';
+const API_URL = 'http://18.207.129.123:8080/schedules';
 
 export async function GET() {
   try {

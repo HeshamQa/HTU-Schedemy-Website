@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const TA_API_URL = 'https://ajapi.htupholio.com/instructor/ta';
+const TA_API_URL = 'http://18.207.129.123:8080/instructor/ta';
 
 export async function GET() {
   try {

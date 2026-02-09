@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    const res = await fetch('https://ajapi.htupholio.com/time', {
+    const res = await fetch('http://18.207.129.123:8080/time', {
       cache: 'no-store',
     });
 
