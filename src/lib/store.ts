@@ -8,7 +8,7 @@ import {
   tas as mockInitialTAs, tas
 } from './data';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://api.htu-schedemy.online';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://api.htu-schedemy.online:8080';
 const API_BASE_URL_ROUTING = 'https://htu-schedemy.online/';
 // const API_BASE_URL_ROUTING = 'http://localhost:3001/';
 
