@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    const res = await fetch('http://13.218.12.13:8080/instructor?departmentName=COMPUTER_SCIENCE', {
+    const res = await fetch('http://api.htu-schedemy.online/instructor?departmentName=COMPUTER_SCIENCE', {
       cache: 'no-store',
     });
 
@@ -25,7 +25,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    const res = await fetch('http://13.218.12.13:8080/instructor', {
+    const res = await fetch('http://api.htu-schedemy.online/instructor', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

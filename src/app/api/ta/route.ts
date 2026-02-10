@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-const TA_API_URL = 'http://13.218.12.13:8080/instructor/ta';
+const TA_API_URL = 'http://api.htu-schedemy.online/instructor/ta';
 
 export async function GET() {
   try {

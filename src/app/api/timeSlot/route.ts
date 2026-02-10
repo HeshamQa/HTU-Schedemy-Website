@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 export async function GET() {
   try {
-    const res = await fetch('http://13.218.12.13:8080/time', {
+    const res = await fetch('http://api.htu-schedemy.online/time', {
       cache: 'no-store',
     });
 

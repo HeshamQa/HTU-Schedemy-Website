@@ -4,7 +4,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    const res = await fetch('http://13.218.12.13:8080/email', {
+    const res = await fetch('http://api.htu-schedemy.online/email', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
