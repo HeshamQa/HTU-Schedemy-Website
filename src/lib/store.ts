@@ -8,7 +8,7 @@ import {
   tas as mockInitialTAs, tas
 } from './data';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://schedemy-alb-239231131.us-east-1.elb.amazonaws.com';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://13.218.12.13:8080';
 const API_BASE_URL_ROUTING = 'https://main.d2xmlgrwtlgrr.amplifyapp.com/';
 // const API_BASE_URL_ROUTING = 'http://localhost:3001/';
 
